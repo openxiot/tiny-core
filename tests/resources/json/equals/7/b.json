@@ -1,0 +1,12 @@
+{
+  "message": {
+    "type": "node-found",
+    "id": "1",
+    "topic": "urn:xiot:node",
+    "payload": {
+      "productId": 111,
+      "productVersion": 222,
+      "serialNumber": "xxx"
+    }
+  }
+}
