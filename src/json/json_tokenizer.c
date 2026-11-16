@@ -456,12 +456,16 @@ JsonToken *JsonTokenizer_Head(const JsonTokenizer *tokenizer)
 
 void JsonTokenizer_Pop(JsonTokenizer *tokenizer)
 {
+    JsonToken *token;
+
     if (tokenizer == NULL)
     {
         return;
     }
 
+    token = JsonTokenizer_Head(tokenizer);
     TinyQueue_Pop(&tokenizer->queue);
+    JsonToken_Delete(token); /* 弹出的 token 不再受队列 Dispose 管理，需在此释放 */
 }
 
 uint32_t JsonTokenizer_GetSize(const JsonTokenizer *tokenizer)
