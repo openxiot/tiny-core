@@ -21,7 +21,7 @@ typedef struct StringArray
     TinyList values; /* char* */
 } StringArray;
 
-TINYCORE_API TINYCORE_RET StringArray_Construct(StringArray *array);
+TINYCORE_API TinyRet StringArray_Construct(StringArray *array);
 TINYCORE_API void StringArray_Dispose(StringArray *array);
 TINYCORE_API StringArray *StringArray_New(void);
 TINYCORE_API void StringArray_Delete(StringArray *array);

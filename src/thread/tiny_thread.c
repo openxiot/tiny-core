@@ -59,7 +59,7 @@ static void tiny_thread_copy_name(TinyThread *thread, const char *name)
     thread->name[length] = '\0';
 }
 
-TINYCORE_RET TinyThread_Construct(TinyThread *thread,
+TinyRet TinyThread_Construct(TinyThread *thread,
                                   TinyThreadEntry entry,
                                   void *context,
                                   const char *name)
@@ -96,7 +96,7 @@ TinyThread *TinyThread_New(TinyThreadEntry entry, void *context, const char *nam
     return thread;
 }
 
-TINYCORE_RET TinyThread_Start(TinyThread *thread)
+TinyRet TinyThread_Start(TinyThread *thread)
 {
     if (thread == NULL || thread->entry == NULL)
     {
@@ -134,7 +134,7 @@ TINYCORE_RET TinyThread_Start(TinyThread *thread)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET TinyThread_Join(TinyThread *thread)
+TinyRet TinyThread_Join(TinyThread *thread)
 {
     if (thread == NULL)
     {

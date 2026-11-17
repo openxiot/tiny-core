@@ -22,12 +22,12 @@ typedef struct JsonTokenizer
     size_t length;
 } JsonTokenizer;
 
-TINYCORE_API TINYCORE_RET JsonTokenizer_Construct(JsonTokenizer *tokenizer);
+TINYCORE_API TinyRet JsonTokenizer_Construct(JsonTokenizer *tokenizer);
 TINYCORE_API void JsonTokenizer_Dispose(JsonTokenizer *tokenizer);
 
 /* Tokenize the complete document held in string/length.  The tokenizer
  * validates token level syntax, not the object/array structure. */
-TINYCORE_API TINYCORE_RET JsonTokenizer_Parse(JsonTokenizer *tokenizer,
+TINYCORE_API TinyRet JsonTokenizer_Parse(JsonTokenizer *tokenizer,
                                               const char *string,
                                               size_t length);
 

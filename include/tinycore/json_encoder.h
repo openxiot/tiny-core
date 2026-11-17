@@ -15,16 +15,16 @@
 
 TINYCORE_BEGIN_DECLS
 
-/* Receives the encoded text in order.  Return a failed TINYCORE_RET to
+/* Receives the encoded text in order.  Return a failed TinyRet to
  * abort encoding. */
-typedef TINYCORE_RET (*JsonOutput)(const char *data, size_t length, void *context);
+typedef TinyRet (*JsonOutput)(const char *data, size_t length, void *context);
 
-TINYCORE_API TINYCORE_RET JsonEncoder_Encode(const JsonObject *object,
+TINYCORE_API TinyRet JsonEncoder_Encode(const JsonObject *object,
                                              bool pretty,
                                              JsonOutput output,
                                              void *context);
 
-TINYCORE_API TINYCORE_RET JsonEncoder_EncodeToBuffer(const JsonObject *object,
+TINYCORE_API TinyRet JsonEncoder_EncodeToBuffer(const JsonObject *object,
                                                      bool pretty,
                                                      Buffer *buffer);
 

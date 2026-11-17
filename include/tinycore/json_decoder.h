@@ -36,7 +36,7 @@ typedef struct JsonDecoder
     bool constructed;
 } JsonDecoder;
 
-TINYCORE_API TINYCORE_RET JsonDecoder_Construct(JsonDecoder *decoder);
+TINYCORE_API TinyRet JsonDecoder_Construct(JsonDecoder *decoder);
 TINYCORE_API void JsonDecoder_Dispose(JsonDecoder *decoder);
 TINYCORE_API JsonDecoder *JsonDecoder_New(void);
 TINYCORE_API void JsonDecoder_Delete(JsonDecoder *decoder);
@@ -46,7 +46,7 @@ TINYCORE_API JsonObject *JsonDecoder_Parse(JsonDecoder *decoder,
                                            const char *string,
                                            JsonDecoderStatus *status);
 
-TINYCORE_API TINYCORE_RET JsonDecoder_Feed(JsonDecoder *decoder,
+TINYCORE_API TinyRet JsonDecoder_Feed(JsonDecoder *decoder,
                                            const void *data,
                                            size_t length);
 

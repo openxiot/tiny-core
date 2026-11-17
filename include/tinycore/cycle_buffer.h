@@ -28,7 +28,7 @@ typedef struct CycleBuffer
     size_t write_index;
 } CycleBuffer;
 
-TINYCORE_API TINYCORE_RET CycleBuffer_Construct(CycleBuffer *buffer, size_t size);
+TINYCORE_API TinyRet CycleBuffer_Construct(CycleBuffer *buffer, size_t size);
 TINYCORE_API void CycleBuffer_Dispose(CycleBuffer *buffer);
 TINYCORE_API CycleBuffer *CycleBuffer_New(size_t size);
 TINYCORE_API void CycleBuffer_Delete(CycleBuffer *buffer);

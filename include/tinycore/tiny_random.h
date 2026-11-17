@@ -29,7 +29,7 @@ TINYCORE_API void tiny_random_seed(uint32_t seed);
 TINYCORE_API uint32_t tiny_random_u32(void);
 
 /* Fill buffer with length random bytes. */
-TINYCORE_API TINYCORE_RET tiny_random_bytes(uint8_t *buffer, size_t length);
+TINYCORE_API TinyRet tiny_random_bytes(uint8_t *buffer, size_t length);
 
 /* Compatibility wrapper for older TinyCore code. */
 TINYCORE_API void tiny_random_create(uint8_t *value, uint8_t length);

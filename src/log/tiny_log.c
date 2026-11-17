@@ -139,7 +139,7 @@ static void tiny_log_reset(void)
     g_log_state.console = false;
 }
 
-TINYCORE_RET tiny_log_init(const char *tag, TinyLogLevel level)
+TinyRet tiny_log_init(const char *tag, TinyLogLevel level)
 {
     tiny_log_lock();
     tiny_log_reset();
@@ -165,7 +165,7 @@ TINYCORE_RET tiny_log_init(const char *tag, TinyLogLevel level)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET tiny_log_init_file(const char *tag, TinyLogLevel level, const char *path)
+TinyRet tiny_log_init_file(const char *tag, TinyLogLevel level, const char *path)
 {
     FILE *file = NULL;
 

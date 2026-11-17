@@ -28,10 +28,10 @@ typedef enum TinyLogLevel
 } TinyLogLevel;
 
 /* Log to the console.  tag may be NULL. */
-TINYCORE_API TINYCORE_RET tiny_log_init(const char *tag, TinyLogLevel level);
+TINYCORE_API TinyRet tiny_log_init(const char *tag, TinyLogLevel level);
 
 /* Append to a file.  The file is created when missing. */
-TINYCORE_API TINYCORE_RET tiny_log_init_file(const char *tag, TinyLogLevel level, const char *path);
+TINYCORE_API TinyRet tiny_log_init_file(const char *tag, TinyLogLevel level, const char *path);
 
 TINYCORE_API void tiny_log_close(void);
 TINYCORE_API void tiny_log_set_level(TinyLogLevel level);

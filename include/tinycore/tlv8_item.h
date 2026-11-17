@@ -24,19 +24,19 @@ typedef struct Tlv8Item
     uint8_t *data;
 } Tlv8Item;
 
-TINYCORE_API TINYCORE_RET Tlv8Item_Construct(Tlv8Item *item);
+TINYCORE_API TinyRet Tlv8Item_Construct(Tlv8Item *item);
 TINYCORE_API void Tlv8Item_Dispose(Tlv8Item *item);
 TINYCORE_API Tlv8Item *Tlv8Item_New(void);
 TINYCORE_API void Tlv8Item_Delete(Tlv8Item *item);
 
 /* Replace type/data with a copy of the first length bytes of data. */
-TINYCORE_API TINYCORE_RET Tlv8Item_Set(Tlv8Item *item,
+TINYCORE_API TinyRet Tlv8Item_Set(Tlv8Item *item,
                                        uint8_t type,
                                        const void *data,
                                        uint32_t length);
 
 /* Append a copy of length bytes to the item's value. */
-TINYCORE_API TINYCORE_RET Tlv8Item_Append(Tlv8Item *item,
+TINYCORE_API TinyRet Tlv8Item_Append(Tlv8Item *item,
                                           const void *data,
                                           uint32_t length);
 

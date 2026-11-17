@@ -43,7 +43,7 @@ static int json_decoder_hex_value(char c)
     return -1;
 }
 
-static TINYCORE_RET json_decoder_read_hex4(const char *text,
+static TinyRet json_decoder_read_hex4(const char *text,
                                            size_t length,
                                            size_t *index,
                                            uint32_t *value)
@@ -74,7 +74,7 @@ static TINYCORE_RET json_decoder_read_hex4(const char *text,
     return TINY_RET_OK;
 }
 
-static TINYCORE_RET json_decoder_write_utf8(char *out, size_t capacity, size_t *offset, uint32_t codepoint)
+static TinyRet json_decoder_write_utf8(char *out, size_t capacity, size_t *offset, uint32_t codepoint)
 {
     size_t o = *offset;
 
@@ -127,7 +127,7 @@ static TINYCORE_RET json_decoder_write_utf8(char *out, size_t capacity, size_t *
 
 /* Decode the escapes of a JSON string body (the text between the quotes).
  * The output is NUL terminated and its length excludes the terminator. */
-static TINYCORE_RET json_decoder_unescape(const char *text,
+static TinyRet json_decoder_unescape(const char *text,
                                           size_t length,
                                           char **out,
                                           size_t *out_length)
@@ -206,7 +206,7 @@ static TINYCORE_RET json_decoder_unescape(const char *text,
             case 'u':
             {
                 uint32_t codepoint = 0;
-                TINYCORE_RET ret = TINY_RET_OK;
+                TinyRet ret = TINY_RET_OK;
 
                 ++i;
                 ret = json_decoder_read_hex4(text, length, &i, &codepoint);
@@ -264,7 +264,7 @@ static TINYCORE_RET json_decoder_unescape(const char *text,
     return TINY_RET_OK;
 }
 
-static TINYCORE_RET json_decoder_parse_number(const char *text,
+static TinyRet json_decoder_parse_number(const char *text,
                                               size_t length,
                                               JsonNumber **out)
 {
@@ -322,12 +322,12 @@ static TINYCORE_RET json_decoder_parse_number(const char *text,
     }
 }
 
-static TINYCORE_RET json_decoder_parse_object(JsonTokenizer *tokenizer,
+static TinyRet json_decoder_parse_object(JsonTokenizer *tokenizer,
                                               JsonObject **out);
-static TINYCORE_RET json_decoder_parse_array(JsonTokenizer *tokenizer,
+static TinyRet json_decoder_parse_array(JsonTokenizer *tokenizer,
                                              JsonArray **out);
 
-static TINYCORE_RET json_decoder_parse_string_value(JsonTokenizer *tokenizer,
+static TinyRet json_decoder_parse_string_value(JsonTokenizer *tokenizer,
                                                     JsonToken *token,
                                                     JsonValue **out)
 {
@@ -335,7 +335,7 @@ static TINYCORE_RET json_decoder_parse_string_value(JsonTokenizer *tokenizer,
     size_t text_length = 0;
     JsonString *string = NULL;
     JsonValue *value = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     ret = json_decoder_unescape(tokenizer->string + token->offset + 1U,
                                 token->length - 2U,
@@ -367,13 +367,13 @@ static TINYCORE_RET json_decoder_parse_string_value(JsonTokenizer *tokenizer,
     return TINY_RET_OK;
 }
 
-static TINYCORE_RET json_decoder_parse_number_value(JsonTokenizer *tokenizer,
+static TinyRet json_decoder_parse_number_value(JsonTokenizer *tokenizer,
                                                     JsonToken *token,
                                                     JsonValue **out)
 {
     JsonNumber *number = NULL;
     JsonValue *value = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     ret = json_decoder_parse_number(tokenizer->string + token->offset,
                                     token->length,
@@ -396,7 +396,7 @@ static TINYCORE_RET json_decoder_parse_number_value(JsonTokenizer *tokenizer,
     return TINY_RET_OK;
 }
 
-static TINYCORE_RET json_decoder_decode_value(JsonTokenizer *tokenizer, JsonValue **out)
+static TinyRet json_decoder_decode_value(JsonTokenizer *tokenizer, JsonValue **out)
 {
     JsonToken *token = JsonTokenizer_Head(tokenizer);
 
@@ -411,7 +411,7 @@ static TINYCORE_RET json_decoder_decode_value(JsonTokenizer *tokenizer, JsonValu
         {
             JsonObject *object = NULL;
             JsonValue *value = NULL;
-            TINYCORE_RET ret = json_decoder_parse_object(tokenizer, &object);
+            TinyRet ret = json_decoder_parse_object(tokenizer, &object);
 
             if (ret != TINY_RET_OK)
             {
@@ -432,7 +432,7 @@ static TINYCORE_RET json_decoder_decode_value(JsonTokenizer *tokenizer, JsonValu
         {
             JsonArray *array = NULL;
             JsonValue *value = NULL;
-            TINYCORE_RET ret = json_decoder_parse_array(tokenizer, &array);
+            TinyRet ret = json_decoder_parse_array(tokenizer, &array);
 
             if (ret != TINY_RET_OK)
             {
@@ -489,7 +489,7 @@ static TINYCORE_RET json_decoder_decode_value(JsonTokenizer *tokenizer, JsonValu
     }
 }
 
-static TINYCORE_RET json_decoder_parse_object(JsonTokenizer *tokenizer, JsonObject **out)
+static TinyRet json_decoder_parse_object(JsonTokenizer *tokenizer, JsonObject **out)
 {
     JsonObject *object = NULL;
     JsonToken *token = JsonTokenizer_Head(tokenizer);
@@ -520,7 +520,7 @@ static TINYCORE_RET json_decoder_parse_object(JsonTokenizer *tokenizer, JsonObje
         char *key = NULL;
         size_t key_length = 0;
         JsonValue *value = NULL;
-        TINYCORE_RET ret = TINY_RET_OK;
+        TinyRet ret = TINY_RET_OK;
 
         token = JsonTokenizer_Head(tokenizer);
         if (token == NULL || token->type != JSON_TOKEN_STRING)
@@ -602,7 +602,7 @@ static TINYCORE_RET json_decoder_parse_object(JsonTokenizer *tokenizer, JsonObje
     }
 }
 
-static TINYCORE_RET json_decoder_parse_array(JsonTokenizer *tokenizer, JsonArray **out)
+static TinyRet json_decoder_parse_array(JsonTokenizer *tokenizer, JsonArray **out)
 {
     JsonArray *array = NULL;
     JsonToken *token = JsonTokenizer_Head(tokenizer);
@@ -631,7 +631,7 @@ static TINYCORE_RET json_decoder_parse_array(JsonTokenizer *tokenizer, JsonArray
     while (true)
     {
         JsonValue *value = NULL;
-        TINYCORE_RET ret = json_decoder_decode_value(tokenizer, &value);
+        TinyRet ret = json_decoder_decode_value(tokenizer, &value);
 
         if (ret != TINY_RET_OK)
         {
@@ -767,7 +767,7 @@ static JsonDecoderStatus json_decoder_scan(const char *data,
     return JSON_DECODER_STATUS_OK;
 }
 
-static JsonDecoderStatus json_decoder_status_from_ret(TINYCORE_RET ret)
+static JsonDecoderStatus json_decoder_status_from_ret(TinyRet ret)
 {
     return (ret == TINY_RET_E_NO_MEMORY)
         ? JSON_DECODER_STATUS_NO_MEMORY
@@ -780,7 +780,7 @@ static JsonObject *json_decoder_decode_document(JsonDecoder *decoder,
 {
     JsonTokenizer tokenizer;
     JsonObject *object = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (status != NULL)
     {
@@ -827,9 +827,9 @@ static JsonObject *json_decoder_decode_document(JsonDecoder *decoder,
     return object;
 }
 
-TINYCORE_RET JsonDecoder_Construct(JsonDecoder *decoder)
+TinyRet JsonDecoder_Construct(JsonDecoder *decoder)
 {
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (decoder == NULL)
     {
@@ -888,7 +888,7 @@ void JsonDecoder_Delete(JsonDecoder *decoder)
     tiny_free(decoder);
 }
 
-TINYCORE_RET JsonDecoder_Feed(JsonDecoder *decoder, const void *data, size_t length)
+TinyRet JsonDecoder_Feed(JsonDecoder *decoder, const void *data, size_t length)
 {
     if (decoder == NULL)
     {

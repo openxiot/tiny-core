@@ -16,33 +16,31 @@
 TINYCORE_BEGIN_DECLS
 
 /*
- * TINYCORE_RET is a 32-bit result code:
+ * TinyRet is a 32-bit result code:
  *
  *   bit 31      severity     0 = success, 1 = failure
  *   bits 29-30  error level  (reserved, currently always 0)
  *   bits 0-28   error code
  *
  * Successful calls return codes >= 0, failures < 0.  Always test with
- * TINYCORE_RET_SUCCEEDED / TINYCORE_RET_FAILED instead of comparing to 0.
+ * TINY_RET_SUCCEEDED / TINY_RET_FAILED instead of comparing to 0.
  */
-typedef int32_t TINYCORE_RET;
-
 typedef int32_t TinyRet;
 
-#define TINYCORE_RET_CODE_MASK   0x1FFFFFFF
-#define TINYCORE_RET_LEVEL_MASK  0x60000000
-#define TINYCORE_RET_FAIL_MASK   0x80000000
+#define TINY_RET_CODE_MASK   0x1FFFFFFF
+#define TINY_RET_LEVEL_MASK  0x60000000
+#define TINY_RET_FAIL_MASK   0x80000000
 
-#define MAKE_RET(code)           ((TINYCORE_RET)(code))
-#define TINYCORE_RET_GET_CODE(r) ((int32_t)((r) & TINYCORE_RET_CODE_MASK))
+#define MAKE_RET(code)           ((TinyRet)(code))
+#define TINY_RET_GET_CODE(r) ((int32_t)((r) & TINY_RET_CODE_MASK))
 
-#define TINYCORE_RET_SUCCEEDED(r) ((r) >= 0)
-#define TINYCORE_RET_FAILED(r)    ((r) < 0)
+#define TINY_RET_SUCCEEDED(r) ((r) >= 0)
+#define TINY_RET_FAILED(r)    ((r) < 0)
 
 /* Compatibility aliases used by older TinyCore releases. */
-#define RET_SUCCEEDED(r) TINYCORE_RET_SUCCEEDED(r)
-#define RET_FAILED(r)    TINYCORE_RET_FAILED(r)
-#define TINY_RET_CODE(r) TINYCORE_RET_GET_CODE(r)
+#define RET_SUCCEEDED(r) TINY_RET_SUCCEEDED(r)
+#define RET_FAILED(r)    TINY_RET_FAILED(r)
+#define TINY_RET_CODE(r) TINY_RET_GET_CODE(r)
 
 /* Success. */
 #define TINY_RET_OK                        MAKE_RET(0)
@@ -97,7 +95,7 @@ typedef int32_t TinyRet;
 #define TINY_RET_E_URL_INVALID             MAKE_RET(-42)
 
 /* Descriptive names for result codes; never returns NULL. */
-TINYCORE_API const char *TinyRet_GetDescription(TINYCORE_RET ret);
+TINYCORE_API const char *TinyRet_GetDescription(TinyRet ret);
 
 TINYCORE_END_DECLS
 

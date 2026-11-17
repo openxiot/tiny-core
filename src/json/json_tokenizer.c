@@ -45,7 +45,7 @@ static void json_tokenizer_delete_token(void *data, void *context)
     JsonToken_Delete((JsonToken *)data);
 }
 
-TINYCORE_RET JsonTokenizer_Construct(JsonTokenizer *tokenizer)
+TinyRet JsonTokenizer_Construct(JsonTokenizer *tokenizer)
 {
     if (tokenizer == NULL)
     {
@@ -72,7 +72,7 @@ void JsonTokenizer_Dispose(JsonTokenizer *tokenizer)
     tokenizer->length = 0;
 }
 
-static TINYCORE_RET json_tokenizer_push(JsonTokenizer *tokenizer,
+static TinyRet json_tokenizer_push(JsonTokenizer *tokenizer,
                                         JsonTokenType type,
                                         size_t offset,
                                         size_t length)
@@ -163,7 +163,7 @@ static size_t json_utf8_length(const uint8_t *p, size_t remaining)
     return length;
 }
 
-static TINYCORE_RET json_tokenizer_parse_string(JsonTokenizer *tokenizer, size_t *index)
+static TinyRet json_tokenizer_parse_string(JsonTokenizer *tokenizer, size_t *index)
 {
     const char *string = tokenizer->string;
     size_t length = tokenizer->length;
@@ -250,7 +250,7 @@ static TINYCORE_RET json_tokenizer_parse_string(JsonTokenizer *tokenizer, size_t
     return TINY_RET_E_INVALID_DATA; /* unterminated */
 }
 
-static TINYCORE_RET json_tokenizer_parse_number(JsonTokenizer *tokenizer, size_t *index)
+static TinyRet json_tokenizer_parse_number(JsonTokenizer *tokenizer, size_t *index)
 {
     const char *string = tokenizer->string;
     size_t length = tokenizer->length;
@@ -322,7 +322,7 @@ static TINYCORE_RET json_tokenizer_parse_number(JsonTokenizer *tokenizer, size_t
     return json_tokenizer_push(tokenizer, JSON_TOKEN_NUMBER, start, i - start);
 }
 
-static TINYCORE_RET json_tokenizer_parse_literal(JsonTokenizer *tokenizer,
+static TinyRet json_tokenizer_parse_literal(JsonTokenizer *tokenizer,
                                                  size_t *index,
                                                  const char *literal,
                                                  JsonTokenType type)
@@ -350,7 +350,7 @@ static TINYCORE_RET json_tokenizer_parse_literal(JsonTokenizer *tokenizer,
     return json_tokenizer_push(tokenizer, type, start, literal_length);
 }
 
-TINYCORE_RET JsonTokenizer_Parse(JsonTokenizer *tokenizer, const char *string, size_t length)
+TinyRet JsonTokenizer_Parse(JsonTokenizer *tokenizer, const char *string, size_t length)
 {
     size_t i = 0;
 
@@ -366,7 +366,7 @@ TINYCORE_RET JsonTokenizer_Parse(JsonTokenizer *tokenizer, const char *string, s
     while (i < length)
     {
         char c = string[i];
-        TINYCORE_RET ret = TINY_RET_OK;
+        TinyRet ret = TINY_RET_OK;
 
         if (json_is_whitespace(c))
         {

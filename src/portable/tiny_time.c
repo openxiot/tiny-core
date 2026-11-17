@@ -84,7 +84,7 @@ uint64_t tiny_current_millisecond(void)
     return tiny_current_microsecond() / 1000ULL;
 }
 
-TINYCORE_RET tiny_getstrtime_format(char *buffer, size_t size, const char *format)
+TinyRet tiny_getstrtime_format(char *buffer, size_t size, const char *format)
 {
     struct tm local_time;
     size_t written = 0;
@@ -107,7 +107,7 @@ TINYCORE_RET tiny_getstrtime_format(char *buffer, size_t size, const char *forma
     return TINY_RET_OK;
 }
 
-TINYCORE_RET tiny_getstrtime(char *buffer, size_t size)
+TinyRet tiny_getstrtime(char *buffer, size_t size)
 {
     return tiny_getstrtime_format(buffer, size, "%Y-%m-%d %H:%M:%S");
 }

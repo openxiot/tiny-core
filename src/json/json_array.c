@@ -17,7 +17,7 @@ static void json_array_delete_value(void *data, void *context)
     JsonValue_Delete((JsonValue *)data);
 }
 
-TINYCORE_RET JsonArray_Construct(JsonArray *array)
+TinyRet JsonArray_Construct(JsonArray *array)
 {
     if (array == NULL)
     {
@@ -100,7 +100,7 @@ void JsonArray_Delete(JsonArray *array)
     tiny_free(array);
 }
 
-TINYCORE_RET JsonArray_CopyInto(JsonArray *dst, const JsonArray *src)
+TinyRet JsonArray_CopyInto(JsonArray *dst, const JsonArray *src)
 {
     const TinyNode *node = NULL;
 
@@ -134,7 +134,7 @@ TINYCORE_RET JsonArray_CopyInto(JsonArray *dst, const JsonArray *src)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET JsonArray_AddValue(JsonArray *array, JsonValue *value)
+TinyRet JsonArray_AddValue(JsonArray *array, JsonValue *value)
 {
     if (array == NULL || value == NULL)
     {
@@ -154,42 +154,42 @@ TINYCORE_RET JsonArray_AddValue(JsonArray *array, JsonValue *value)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET JsonArray_AddString(JsonArray *array, const char *value)
+TinyRet JsonArray_AddString(JsonArray *array, const char *value)
 {
     return JsonArray_AddValue(array, JsonValue_NewString(value));
 }
 
-TINYCORE_RET JsonArray_AddInteger(JsonArray *array, int32_t value)
+TinyRet JsonArray_AddInteger(JsonArray *array, int32_t value)
 {
     return JsonArray_AddValue(array, JsonValue_NewInteger(value));
 }
 
-TINYCORE_RET JsonArray_AddFloat(JsonArray *array, double value)
+TinyRet JsonArray_AddFloat(JsonArray *array, double value)
 {
     return JsonArray_AddValue(array, JsonValue_NewFloat(value));
 }
 
-TINYCORE_RET JsonArray_AddBoolean(JsonArray *array, bool value)
+TinyRet JsonArray_AddBoolean(JsonArray *array, bool value)
 {
     return JsonArray_AddValue(array, JsonValue_NewBoolean(value));
 }
 
-TINYCORE_RET JsonArray_AddNull(JsonArray *array)
+TinyRet JsonArray_AddNull(JsonArray *array)
 {
     return JsonArray_AddValue(array, JsonValue_NewNull());
 }
 
-TINYCORE_RET JsonArray_AddNumber(JsonArray *array, JsonNumber *value)
+TinyRet JsonArray_AddNumber(JsonArray *array, JsonNumber *value)
 {
     return JsonArray_AddValue(array, JsonValue_NewNumber(value));
 }
 
-TINYCORE_RET JsonArray_AddObject(JsonArray *array, JsonObject *value)
+TinyRet JsonArray_AddObject(JsonArray *array, JsonObject *value)
 {
     return JsonArray_AddValue(array, JsonValue_NewObject(value));
 }
 
-TINYCORE_RET JsonArray_AddArray(JsonArray *array, JsonArray *value)
+TinyRet JsonArray_AddArray(JsonArray *array, JsonArray *value)
 {
     return JsonArray_AddValue(array, JsonValue_NewArray(value));
 }

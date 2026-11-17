@@ -14,7 +14,7 @@
 #include <tinycore/json_string.h>
 #include <tinycore/json_value.h>
 
-static TINYCORE_RET tlv8_item_set_string(Tlv8Item *item, const JsonString *string)
+static TinyRet tlv8_item_set_string(Tlv8Item *item, const JsonString *string)
 {
     size_t length = JsonString_GetLength(string);
 
@@ -29,7 +29,7 @@ static TINYCORE_RET tlv8_item_set_string(Tlv8Item *item, const JsonString *strin
                         (uint32_t)length);
 }
 
-static TINYCORE_RET tlv8_item_set_number(Tlv8Item *item, const JsonNumber *number)
+static TinyRet tlv8_item_set_number(Tlv8Item *item, const JsonNumber *number)
 {
     if (!JsonNumber_IsInteger(number))
     {
@@ -72,14 +72,14 @@ static TINYCORE_RET tlv8_item_set_number(Tlv8Item *item, const JsonNumber *numbe
     }
 }
 
-static TINYCORE_RET tlv8_item_set_boolean(Tlv8Item *item, const JsonBoolean *boolean)
+static TinyRet tlv8_item_set_boolean(Tlv8Item *item, const JsonBoolean *boolean)
 {
     uint8_t value = JsonBoolean_GetValue(boolean) ? 1U : 0U;
 
     return Tlv8Item_Set(item, (uint8_t)TLV8_VALUE_BOOLEAN, &value, 1U);
 }
 
-static TINYCORE_RET tlv8_item_set_value(Tlv8Item *item, const JsonValue *value)
+static TinyRet tlv8_item_set_value(Tlv8Item *item, const JsonValue *value)
 {
     switch (value->type)
     {

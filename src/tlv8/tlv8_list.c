@@ -13,7 +13,7 @@
 #define TLV8_TYPE_SEPARATOR 0xFFU
 #define TLV8_MAX_FRAGMENT   255U
 
-static TINYCORE_RET tlv8_list_serialize(Tlv8List *list);
+static TinyRet tlv8_list_serialize(Tlv8List *list);
 
 static void tlv8_list_delete_item(void *data, void *context)
 {
@@ -28,7 +28,7 @@ static void tlv8_list_invalidate(Tlv8List *list)
     list->size = 0;
 }
 
-TINYCORE_RET Tlv8List_Construct(Tlv8List *list)
+TinyRet Tlv8List_Construct(Tlv8List *list)
 {
     if (list == NULL)
     {
@@ -131,14 +131,14 @@ void Tlv8List_Clear(Tlv8List *list)
     tlv8_list_invalidate(list);
 }
 
-TINYCORE_RET Tlv8List_AddBytes(Tlv8List *list,
+TinyRet Tlv8List_AddBytes(Tlv8List *list,
                                uint8_t type,
                                const void *value,
                                size_t length,
                                bool merge_value)
 {
     Tlv8Item *item = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (list == NULL || (value == NULL && length > 0))
     {
@@ -195,7 +195,7 @@ TINYCORE_RET Tlv8List_AddBytes(Tlv8List *list,
     return TINY_RET_OK;
 }
 
-TINYCORE_RET Tlv8List_AddByte(Tlv8List *list,
+TinyRet Tlv8List_AddByte(Tlv8List *list,
                               uint8_t type,
                               uint8_t value,
                               bool merge_value)
@@ -203,7 +203,7 @@ TINYCORE_RET Tlv8List_AddByte(Tlv8List *list,
     return Tlv8List_AddBytes(list, type, &value, 1U, merge_value);
 }
 
-TINYCORE_RET Tlv8List_AddSeparator(Tlv8List *list)
+TinyRet Tlv8List_AddSeparator(Tlv8List *list)
 {
     if (list == NULL)
     {
@@ -213,7 +213,7 @@ TINYCORE_RET Tlv8List_AddSeparator(Tlv8List *list)
     return Tlv8List_AddBytes(list, TLV8_TYPE_SEPARATOR, NULL, 0U, false);
 }
 
-TINYCORE_RET Tlv8List_Parse(Tlv8List *list,
+TinyRet Tlv8List_Parse(Tlv8List *list,
                             const void *data,
                             size_t length,
                             bool merge_values)
@@ -230,7 +230,7 @@ TINYCORE_RET Tlv8List_Parse(Tlv8List *list,
     {
         uint8_t type = 0;
         size_t fragment_length = 0;
-        TINYCORE_RET ret = TINY_RET_OK;
+        TinyRet ret = TINY_RET_OK;
 
         if (length - offset < 2U)
         {
@@ -334,7 +334,7 @@ static void tlv8_serialize_item(uint8_t *output,
     } while (position < item->length);
 }
 
-static TINYCORE_RET tlv8_list_serialize(Tlv8List *list)
+static TinyRet tlv8_list_serialize(Tlv8List *list)
 {
     const TinyNode *node = NULL;
     size_t total = 0;

@@ -37,7 +37,7 @@ static int format_with_arguments(char *buffer, size_t size, const char *format, 
 
 static void test_ret_descriptions(void)
 {
-    TINYCORE_RET ret = MAKE_RET(-7);
+    TinyRet ret = MAKE_RET(-7);
 
     TINY_TEST_CHECK(strcmp(TinyRet_GetDescription(TINY_RET_OK), "ok") == 0);
     TINY_TEST_CHECK(strcmp(TinyRet_GetDescription(TINY_RET_E_NULL_PTR), "null pointer") == 0);
@@ -47,13 +47,13 @@ static void test_ret_descriptions(void)
     TINY_TEST_CHECK(TinyRet_GetDescription(MAKE_RET(-9999)) != NULL);
 
     TINY_TEST_CHECK(ret == TINY_RET_E_NOT_FOUND);
-    TINY_TEST_CHECK(TINYCORE_RET_SUCCEEDED(TINY_RET_OK));
-    TINY_TEST_CHECK(!TINYCORE_RET_SUCCEEDED(TINY_RET_E_UNKNOWN));
-    TINY_TEST_CHECK(TINYCORE_RET_FAILED(TINY_RET_E_UNKNOWN));
+    TINY_TEST_CHECK(TINY_RET_SUCCEEDED(TINY_RET_OK));
+    TINY_TEST_CHECK(!TINY_RET_SUCCEEDED(TINY_RET_E_UNKNOWN));
+    TINY_TEST_CHECK(TINY_RET_FAILED(TINY_RET_E_UNKNOWN));
     TINY_TEST_CHECK(RET_SUCCEEDED(TINY_RET_OK));
     TINY_TEST_CHECK(RET_FAILED(TINY_RET_E_UNKNOWN));
     TINY_TEST_CHECK(TINY_RET_CODE(TINY_RET_E_NOT_FOUND) ==
-                    (int32_t)(TINY_RET_E_NOT_FOUND & TINYCORE_RET_CODE_MASK));
+                    (int32_t)(TINY_RET_E_NOT_FOUND & TINY_RET_CODE_MASK));
 }
 
 static void test_alloc(void)

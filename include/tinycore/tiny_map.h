@@ -53,14 +53,14 @@ TINYCORE_API void *TinyMap_GetValue(const TinyMap *map, const char *key);
 /* Insert or replace.  When the key already exists the previous value is
  * returned through old_value (if old_value is not NULL) and the caller owns
  * it; the delete listener is not invoked for replaced values. */
-TINYCORE_API TINYCORE_RET TinyMap_Put(TinyMap *map, const char *key, void *value, void **old_value);
+TINYCORE_API TinyRet TinyMap_Put(TinyMap *map, const char *key, void *value, void **old_value);
 
 /* Insert only when the key is absent; returns TINY_RET_E_EXIST otherwise. */
-TINYCORE_API TINYCORE_RET TinyMap_Insert(TinyMap *map, const char *key, void *value);
+TINYCORE_API TinyRet TinyMap_Insert(TinyMap *map, const char *key, void *value);
 
 /* Remove one key.  The value is passed to the delete listener when one is
  * installed. */
-TINYCORE_API TINYCORE_RET TinyMap_Erase(TinyMap *map, const char *key);
+TINYCORE_API TinyRet TinyMap_Erase(TinyMap *map, const char *key);
 
 /* Remove everything, invoking the delete listener for each value. */
 TINYCORE_API void TinyMap_Clear(TinyMap *map);

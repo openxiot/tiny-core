@@ -25,7 +25,7 @@ typedef struct JsonEncoderState
     void *context;
     Buffer *buffer;
     bool pretty;
-    TINYCORE_RET status;
+    TinyRet status;
 } JsonEncoderState;
 
 static void json_encoder_indent(JsonEncoderState *state, int depth)
@@ -336,7 +336,7 @@ static void json_encoder_encode_value(JsonEncoderState *state,
     }
 }
 
-static TINYCORE_RET json_encoder_run(const JsonObject *object,
+static TinyRet json_encoder_run(const JsonObject *object,
                                      bool pretty,
                                      JsonOutput output,
                                      void *context,
@@ -361,7 +361,7 @@ static TINYCORE_RET json_encoder_run(const JsonObject *object,
     return state.status;
 }
 
-TINYCORE_RET JsonEncoder_Encode(const JsonObject *object,
+TinyRet JsonEncoder_Encode(const JsonObject *object,
                                 bool pretty,
                                 JsonOutput output,
                                 void *context)
@@ -374,7 +374,7 @@ TINYCORE_RET JsonEncoder_Encode(const JsonObject *object,
     return json_encoder_run(object, pretty, output, context, NULL);
 }
 
-TINYCORE_RET JsonEncoder_EncodeToBuffer(const JsonObject *object,
+TinyRet JsonEncoder_EncodeToBuffer(const JsonObject *object,
                                         bool pretty,
                                         Buffer *buffer)
 {
@@ -390,7 +390,7 @@ TINYCORE_RET JsonEncoder_EncodeToBuffer(const JsonObject *object,
 char *JsonEncoder_ToString(const JsonObject *object, bool pretty)
 {
     Buffer buffer;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
     char *result = NULL;
 
     if (object == NULL)

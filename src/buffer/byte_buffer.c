@@ -10,7 +10,7 @@
 #include <tinycore/byte_buffer.h>
 #include <tinycore/tiny_alloc.h>
 
-TINYCORE_RET ByteBuffer_Construct(ByteBuffer *buffer, size_t size)
+TinyRet ByteBuffer_Construct(ByteBuffer *buffer, size_t size)
 {
     if (buffer == NULL)
     {

@@ -26,10 +26,10 @@ TINYCORE_API uint64_t tiny_current_microsecond(void);
 TINYCORE_API uint64_t tiny_current_millisecond(void);
 
 /* Writes the local time as "YYYY-MM-DD HH:MM:SS" into buffer. */
-TINYCORE_API TINYCORE_RET tiny_getstrtime(char *buffer, size_t size);
+TINYCORE_API TinyRet tiny_getstrtime(char *buffer, size_t size);
 
 /* Writes the local time using strftime()'s format. */
-TINYCORE_API TINYCORE_RET tiny_getstrtime_format(char *buffer, size_t size, const char *format);
+TINYCORE_API TinyRet tiny_getstrtime_format(char *buffer, size_t size, const char *format);
 
 /* Suspend the calling thread. */
 TINYCORE_API void tiny_sleep_ms(uint32_t milliseconds);

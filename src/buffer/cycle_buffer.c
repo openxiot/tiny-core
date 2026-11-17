@@ -10,7 +10,7 @@
 #include <tinycore/cycle_buffer.h>
 #include <tinycore/tiny_alloc.h>
 
-TINYCORE_RET CycleBuffer_Construct(CycleBuffer *buffer, size_t size)
+TinyRet CycleBuffer_Construct(CycleBuffer *buffer, size_t size)
 {
     if (buffer == NULL)
     {

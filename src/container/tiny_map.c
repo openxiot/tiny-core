@@ -156,7 +156,7 @@ void *TinyMap_GetValue(const TinyMap *map, const char *key)
     return (item != NULL) ? item->value : NULL;
 }
 
-TINYCORE_RET TinyMap_Put(TinyMap *map, const char *key, void *value, void **old_value)
+TinyRet TinyMap_Put(TinyMap *map, const char *key, void *value, void **old_value)
 {
     TinyMapItem *item = NULL;
     TinyNode *node = NULL;
@@ -197,10 +197,10 @@ TINYCORE_RET TinyMap_Put(TinyMap *map, const char *key, void *value, void **old_
     return TINY_RET_OK;
 }
 
-TINYCORE_RET TinyMap_Insert(TinyMap *map, const char *key, void *value)
+TinyRet TinyMap_Insert(TinyMap *map, const char *key, void *value)
 {
     void *old_value = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (map == NULL || key == NULL)
     {
@@ -216,7 +216,7 @@ TINYCORE_RET TinyMap_Insert(TinyMap *map, const char *key, void *value)
     return ret;
 }
 
-TINYCORE_RET TinyMap_Erase(TinyMap *map, const char *key)
+TinyRet TinyMap_Erase(TinyMap *map, const char *key)
 {
     TinyNode *node = NULL;
 

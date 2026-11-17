@@ -505,7 +505,7 @@ typedef struct OutputCollector
     int fail_at;
 } OutputCollector;
 
-static TINYCORE_RET collect_output(const char *data, size_t length, void *context)
+static TinyRet collect_output(const char *data, size_t length, void *context)
 {
     OutputCollector *collector = (OutputCollector *)context;
 

@@ -29,7 +29,7 @@ typedef struct Tlv8List
     uint32_t size;
 } Tlv8List;
 
-TINYCORE_API TINYCORE_RET Tlv8List_Construct(Tlv8List *list);
+TINYCORE_API TinyRet Tlv8List_Construct(Tlv8List *list);
 TINYCORE_API void Tlv8List_Dispose(Tlv8List *list);
 TINYCORE_API Tlv8List *Tlv8List_New(void);
 TINYCORE_API void Tlv8List_Delete(Tlv8List *list);
@@ -37,7 +37,7 @@ TINYCORE_API void Tlv8List_Delete(Tlv8List *list);
 /* Parse a serialized TLV8 buffer.  Existing items are kept unless Clear()
  * is called first.  When merge_values is true, fragments with the same type
  * are concatenated into one item. */
-TINYCORE_API TINYCORE_RET Tlv8List_Parse(Tlv8List *list,
+TINYCORE_API TinyRet Tlv8List_Parse(Tlv8List *list,
                                          const void *data,
                                          size_t length,
                                          bool merge_values);
@@ -51,18 +51,18 @@ TINYCORE_API Tlv8Item *Tlv8List_Get(const Tlv8List *list, uint8_t type);
 TINYCORE_API uint32_t Tlv8List_GetCount(const Tlv8List *list);
 TINYCORE_API Tlv8Item *Tlv8List_GetAt(const Tlv8List *list, uint32_t index);
 
-TINYCORE_API TINYCORE_RET Tlv8List_AddBytes(Tlv8List *list,
+TINYCORE_API TinyRet Tlv8List_AddBytes(Tlv8List *list,
                                             uint8_t type,
                                             const void *value,
                                             size_t length,
                                             bool merge_value);
 
-TINYCORE_API TINYCORE_RET Tlv8List_AddByte(Tlv8List *list,
+TINYCORE_API TinyRet Tlv8List_AddByte(Tlv8List *list,
                                            uint8_t type,
                                            uint8_t value,
                                            bool merge_value);
 
-TINYCORE_API TINYCORE_RET Tlv8List_AddSeparator(Tlv8List *list);
+TINYCORE_API TinyRet Tlv8List_AddSeparator(Tlv8List *list);
 
 /* Remove every item. */
 TINYCORE_API void Tlv8List_Clear(Tlv8List *list);

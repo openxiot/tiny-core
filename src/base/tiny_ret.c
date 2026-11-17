@@ -11,7 +11,7 @@
 
 typedef struct TinyRetDescription
 {
-    TINYCORE_RET ret;
+    TinyRet ret;
     const char *description;
 } TinyRetDescription;
 
@@ -57,7 +57,7 @@ static const TinyRetDescription kTinyRetDescriptions[] =
     { TINY_RET_E_URL_INVALID,         "invalid URL" }
 };
 
-const char *TinyRet_GetDescription(TINYCORE_RET ret)
+const char *TinyRet_GetDescription(TinyRet ret)
 {
     size_t i = 0;
 

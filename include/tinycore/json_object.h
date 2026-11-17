@@ -27,11 +27,11 @@ TINYCORE_API JsonObject *JsonObject_NewStringFast(const char *string);
 
 TINYCORE_API void JsonObject_Delete(JsonObject *object);
 
-TINYCORE_API TINYCORE_RET JsonObject_Construct(JsonObject *object);
+TINYCORE_API TinyRet JsonObject_Construct(JsonObject *object);
 TINYCORE_API void JsonObject_Dispose(JsonObject *object);
 
 /* Serialize into buffer (which is cleared first). */
-TINYCORE_API TINYCORE_RET JsonObject_Encode(const JsonObject *object,
+TINYCORE_API TinyRet JsonObject_Encode(const JsonObject *object,
                                             bool pretty,
                                             Buffer *buffer);
 
@@ -54,20 +54,20 @@ TINYCORE_API const char *JsonObject_GetStringValue(const JsonObject *object, con
 
 /* Put* functions insert or replace and take ownership of their payload.
  * When a value is replaced, the old value is released. */
-TINYCORE_API TINYCORE_RET JsonObject_PutValue(JsonObject *object, const char *key, JsonValue *value);
-TINYCORE_API TINYCORE_RET JsonObject_PutString(JsonObject *object, const char *key, const char *value);
-TINYCORE_API TINYCORE_RET JsonObject_PutInteger(JsonObject *object, const char *key, int32_t value);
-TINYCORE_API TINYCORE_RET JsonObject_PutFloat(JsonObject *object, const char *key, double value);
-TINYCORE_API TINYCORE_RET JsonObject_PutBoolean(JsonObject *object, const char *key, bool value);
-TINYCORE_API TINYCORE_RET JsonObject_PutNull(JsonObject *object, const char *key);
-TINYCORE_API TINYCORE_RET JsonObject_PutNumber(JsonObject *object, const char *key, JsonNumber *value);
-TINYCORE_API TINYCORE_RET JsonObject_PutObject(JsonObject *object, const char *key, JsonObject *value);
-TINYCORE_API TINYCORE_RET JsonObject_PutArray(JsonObject *object, const char *key, JsonArray *value);
+TINYCORE_API TinyRet JsonObject_PutValue(JsonObject *object, const char *key, JsonValue *value);
+TINYCORE_API TinyRet JsonObject_PutString(JsonObject *object, const char *key, const char *value);
+TINYCORE_API TinyRet JsonObject_PutInteger(JsonObject *object, const char *key, int32_t value);
+TINYCORE_API TinyRet JsonObject_PutFloat(JsonObject *object, const char *key, double value);
+TINYCORE_API TinyRet JsonObject_PutBoolean(JsonObject *object, const char *key, bool value);
+TINYCORE_API TinyRet JsonObject_PutNull(JsonObject *object, const char *key);
+TINYCORE_API TinyRet JsonObject_PutNumber(JsonObject *object, const char *key, JsonNumber *value);
+TINYCORE_API TinyRet JsonObject_PutObject(JsonObject *object, const char *key, JsonObject *value);
+TINYCORE_API TinyRet JsonObject_PutArray(JsonObject *object, const char *key, JsonArray *value);
 
 /* Insert a deep copy; the caller keeps ownership of value. */
-TINYCORE_API TINYCORE_RET JsonObject_AddValue(JsonObject *object, const char *key, const JsonValue *value);
+TINYCORE_API TinyRet JsonObject_AddValue(JsonObject *object, const char *key, const JsonValue *value);
 
-TINYCORE_API TINYCORE_RET JsonObject_Remove(JsonObject *object, const char *key);
+TINYCORE_API TinyRet JsonObject_Remove(JsonObject *object, const char *key);
 
 TINYCORE_API bool JsonObject_Equals(const JsonObject *object, const JsonObject *other);
 

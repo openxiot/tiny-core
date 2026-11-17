@@ -10,7 +10,7 @@
 #include <tinycore/tlv8_item.h>
 #include <tinycore/tiny_alloc.h>
 
-TINYCORE_RET Tlv8Item_Construct(Tlv8Item *item)
+TinyRet Tlv8Item_Construct(Tlv8Item *item)
 {
     if (item == NULL)
     {
@@ -62,7 +62,7 @@ void Tlv8Item_Delete(Tlv8Item *item)
     tiny_free(item);
 }
 
-TINYCORE_RET Tlv8Item_Set(Tlv8Item *item,
+TinyRet Tlv8Item_Set(Tlv8Item *item,
                           uint8_t type,
                           const void *data,
                           uint32_t length)
@@ -98,7 +98,7 @@ TINYCORE_RET Tlv8Item_Set(Tlv8Item *item,
     return TINY_RET_OK;
 }
 
-TINYCORE_RET Tlv8Item_Append(Tlv8Item *item,
+TinyRet Tlv8Item_Append(Tlv8Item *item,
                              const void *data,
                              uint32_t length)
 {

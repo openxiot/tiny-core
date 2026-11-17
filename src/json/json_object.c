@@ -23,7 +23,7 @@ static void json_object_delete_value(void *value, void *context)
     JsonValue_Delete((JsonValue *)value);
 }
 
-TINYCORE_RET JsonObject_Construct(JsonObject *object)
+TinyRet JsonObject_Construct(JsonObject *object)
 {
     if (object == NULL)
     {
@@ -178,10 +178,10 @@ const char *JsonObject_GetStringValue(const JsonObject *object, const char *key)
     return JsonString_GetValue(JsonObject_GetString(object, key));
 }
 
-TINYCORE_RET JsonObject_PutValue(JsonObject *object, const char *key, JsonValue *value)
+TinyRet JsonObject_PutValue(JsonObject *object, const char *key, JsonValue *value)
 {
     void *old_value = NULL;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (object == NULL || key == NULL || value == NULL)
     {
@@ -202,11 +202,11 @@ TINYCORE_RET JsonObject_PutValue(JsonObject *object, const char *key, JsonValue 
     return TINY_RET_OK;
 }
 
-static TINYCORE_RET json_object_put_created(JsonObject *object,
+static TinyRet json_object_put_created(JsonObject *object,
                                            const char *key,
                                            JsonValue *value)
 {
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (value == NULL)
     {
@@ -222,54 +222,54 @@ static TINYCORE_RET json_object_put_created(JsonObject *object,
     return ret;
 }
 
-TINYCORE_RET JsonObject_PutString(JsonObject *object, const char *key, const char *value)
+TinyRet JsonObject_PutString(JsonObject *object, const char *key, const char *value)
 {
     return json_object_put_created(object, key, JsonValue_NewString(value));
 }
 
-TINYCORE_RET JsonObject_PutInteger(JsonObject *object, const char *key, int32_t value)
+TinyRet JsonObject_PutInteger(JsonObject *object, const char *key, int32_t value)
 {
     return json_object_put_created(object, key, JsonValue_NewInteger(value));
 }
 
-TINYCORE_RET JsonObject_PutFloat(JsonObject *object, const char *key, double value)
+TinyRet JsonObject_PutFloat(JsonObject *object, const char *key, double value)
 {
     return json_object_put_created(object, key, JsonValue_NewFloat(value));
 }
 
-TINYCORE_RET JsonObject_PutBoolean(JsonObject *object, const char *key, bool value)
+TinyRet JsonObject_PutBoolean(JsonObject *object, const char *key, bool value)
 {
     return json_object_put_created(object, key, JsonValue_NewBoolean(value));
 }
 
-TINYCORE_RET JsonObject_PutNull(JsonObject *object, const char *key)
+TinyRet JsonObject_PutNull(JsonObject *object, const char *key)
 {
     return json_object_put_created(object, key, JsonValue_NewNull());
 }
 
-TINYCORE_RET JsonObject_PutNumber(JsonObject *object, const char *key, JsonNumber *value)
+TinyRet JsonObject_PutNumber(JsonObject *object, const char *key, JsonNumber *value)
 {
     return json_object_put_created(object, key, JsonValue_NewNumber(value));
 }
 
-TINYCORE_RET JsonObject_PutObject(JsonObject *object, const char *key, JsonObject *value)
+TinyRet JsonObject_PutObject(JsonObject *object, const char *key, JsonObject *value)
 {
     return json_object_put_created(object, key, JsonValue_NewObject(value));
 }
 
-TINYCORE_RET JsonObject_PutArray(JsonObject *object, const char *key, JsonArray *value)
+TinyRet JsonObject_PutArray(JsonObject *object, const char *key, JsonArray *value)
 {
     return json_object_put_created(object, key, JsonValue_NewArray(value));
 }
 
-TINYCORE_RET JsonObject_AddValue(JsonObject *object, const char *key, const JsonValue *value)
+TinyRet JsonObject_AddValue(JsonObject *object, const char *key, const JsonValue *value)
 {
     JsonValue *copy = JsonValue_NewFrom(value);
 
     return json_object_put_created(object, key, copy);
 }
 
-TINYCORE_RET JsonObject_Remove(JsonObject *object, const char *key)
+TinyRet JsonObject_Remove(JsonObject *object, const char *key)
 {
     if (object == NULL)
     {
@@ -279,7 +279,7 @@ TINYCORE_RET JsonObject_Remove(JsonObject *object, const char *key)
     return TinyMap_Erase(&object->data, key);
 }
 
-TINYCORE_RET JsonObject_Encode(const JsonObject *object, bool pretty, Buffer *buffer)
+TinyRet JsonObject_Encode(const JsonObject *object, bool pretty, Buffer *buffer)
 {
     return JsonEncoder_EncodeToBuffer(object, pretty, buffer);
 }

@@ -27,7 +27,7 @@ TINYCORE_BEGIN_DECLS
  * TINY_RET_E_BUFFER_TRUNCATED when host or uri does not fit.
  * IPv6 literals are not supported.
  */
-TINYCORE_API TINYCORE_RET tiny_url_split(const char *url,
+TINYCORE_API TinyRet tiny_url_split(const char *url,
                                          char host[],
                                          size_t host_size,
                                          uint16_t *port,

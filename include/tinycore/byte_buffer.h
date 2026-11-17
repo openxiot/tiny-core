@@ -30,7 +30,7 @@ typedef struct ByteBuffer
     size_t length; /* write position */
 } ByteBuffer;
 
-TINYCORE_API TINYCORE_RET ByteBuffer_Construct(ByteBuffer *buffer, size_t size);
+TINYCORE_API TinyRet ByteBuffer_Construct(ByteBuffer *buffer, size_t size);
 TINYCORE_API void ByteBuffer_Dispose(ByteBuffer *buffer);
 TINYCORE_API ByteBuffer *ByteBuffer_New(size_t size);
 TINYCORE_API void ByteBuffer_Delete(ByteBuffer *buffer);

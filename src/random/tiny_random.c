@@ -62,7 +62,7 @@ uint32_t tiny_random_u32(void)
     return tiny_random_next();
 }
 
-TINYCORE_RET tiny_random_bytes(uint8_t *buffer, size_t length)
+TinyRet tiny_random_bytes(uint8_t *buffer, size_t length)
 {
     size_t offset = 0;
 

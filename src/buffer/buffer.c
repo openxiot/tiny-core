@@ -12,7 +12,7 @@
 
 #define TINYCORE_BUFFER_MIN_CAPACITY 16U
 
-static TINYCORE_RET buffer_grow(Buffer *buffer, size_t needed)
+static TinyRet buffer_grow(Buffer *buffer, size_t needed)
 {
     size_t capacity = buffer->capacity;
     uint8_t *bytes = NULL;
@@ -52,7 +52,7 @@ static TINYCORE_RET buffer_grow(Buffer *buffer, size_t needed)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET Buffer_Construct(Buffer *buffer, size_t capacity)
+TinyRet Buffer_Construct(Buffer *buffer, size_t capacity)
 {
     if (buffer == NULL)
     {
@@ -138,7 +138,7 @@ bool Buffer_IsEmpty(const Buffer *buffer)
     return (buffer == NULL) || (buffer->length == 0);
 }
 
-TINYCORE_RET Buffer_Reserve(Buffer *buffer, size_t capacity)
+TinyRet Buffer_Reserve(Buffer *buffer, size_t capacity)
 {
     if (buffer == NULL)
     {
@@ -148,10 +148,10 @@ TINYCORE_RET Buffer_Reserve(Buffer *buffer, size_t capacity)
     return buffer_grow(buffer, capacity);
 }
 
-TINYCORE_RET Buffer_SetLength(Buffer *buffer, size_t length)
+TinyRet Buffer_SetLength(Buffer *buffer, size_t length)
 {
     size_t old_length = 0;
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (buffer == NULL)
     {
@@ -180,9 +180,9 @@ TINYCORE_RET Buffer_SetLength(Buffer *buffer, size_t length)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET Buffer_Append(Buffer *buffer, const void *data, size_t length)
+TinyRet Buffer_Append(Buffer *buffer, const void *data, size_t length)
 {
-    TINYCORE_RET ret = TINY_RET_OK;
+    TinyRet ret = TINY_RET_OK;
 
     if (buffer == NULL)
     {
@@ -212,12 +212,12 @@ TINYCORE_RET Buffer_Append(Buffer *buffer, const void *data, size_t length)
     return TINY_RET_OK;
 }
 
-TINYCORE_RET Buffer_AppendByte(Buffer *buffer, uint8_t value)
+TinyRet Buffer_AppendByte(Buffer *buffer, uint8_t value)
 {
     return Buffer_Append(buffer, &value, 1U);
 }
 
-TINYCORE_RET Buffer_AppendString(Buffer *buffer, const char *string)
+TinyRet Buffer_AppendString(Buffer *buffer, const char *string)
 {
     if (string == NULL)
     {

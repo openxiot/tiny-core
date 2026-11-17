@@ -35,7 +35,7 @@ static const char *tiny_url_skip_scheme(const char *url)
     return url + i;
 }
 
-TINYCORE_RET tiny_url_split(const char *url,
+TinyRet tiny_url_split(const char *url,
                             char host[],
                             size_t host_size,
                             uint16_t *port,

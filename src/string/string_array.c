@@ -16,7 +16,7 @@ static void string_array_delete_value(void *data, void *context)
     tiny_free(data);
 }
 
-TINYCORE_RET StringArray_Construct(StringArray *array)
+TinyRet StringArray_Construct(StringArray *array)
 {
     if (array == NULL)
     {
@@ -94,7 +94,7 @@ TinyNode *StringArray_Add(StringArray *array, const char *value)
     return node;
 }
 
-static TINYCORE_RET string_array_parse(StringArray *array,
+static TinyRet string_array_parse(StringArray *array,
                                        const char *string,
                                        const char *separator)
 {

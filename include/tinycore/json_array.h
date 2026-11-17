@@ -23,21 +23,21 @@ TINYCORE_API void JsonArray_Delete(JsonArray *array);
  * dst is released.  JsonArray_NewFrom() returns a new array rather than
  * an in-place copy, so this helper bridges the two styles.
  */
-TINYCORE_API TINYCORE_RET JsonArray_CopyInto(JsonArray *dst, const JsonArray *src);
+TINYCORE_API TinyRet JsonArray_CopyInto(JsonArray *dst, const JsonArray *src);
 
-TINYCORE_API TINYCORE_RET JsonArray_Construct(JsonArray *array);
+TINYCORE_API TinyRet JsonArray_Construct(JsonArray *array);
 TINYCORE_API void JsonArray_Dispose(JsonArray *array);
 
 /* Add* functions take ownership of their payload. */
-TINYCORE_API TINYCORE_RET JsonArray_AddValue(JsonArray *array, JsonValue *value);
-TINYCORE_API TINYCORE_RET JsonArray_AddString(JsonArray *array, const char *value);
-TINYCORE_API TINYCORE_RET JsonArray_AddInteger(JsonArray *array, int32_t value);
-TINYCORE_API TINYCORE_RET JsonArray_AddFloat(JsonArray *array, double value);
-TINYCORE_API TINYCORE_RET JsonArray_AddBoolean(JsonArray *array, bool value);
-TINYCORE_API TINYCORE_RET JsonArray_AddNull(JsonArray *array);
-TINYCORE_API TINYCORE_RET JsonArray_AddNumber(JsonArray *array, JsonNumber *value);
-TINYCORE_API TINYCORE_RET JsonArray_AddObject(JsonArray *array, JsonObject *value);
-TINYCORE_API TINYCORE_RET JsonArray_AddArray(JsonArray *array, JsonArray *value);
+TINYCORE_API TinyRet JsonArray_AddValue(JsonArray *array, JsonValue *value);
+TINYCORE_API TinyRet JsonArray_AddString(JsonArray *array, const char *value);
+TINYCORE_API TinyRet JsonArray_AddInteger(JsonArray *array, int32_t value);
+TINYCORE_API TinyRet JsonArray_AddFloat(JsonArray *array, double value);
+TINYCORE_API TinyRet JsonArray_AddBoolean(JsonArray *array, bool value);
+TINYCORE_API TinyRet JsonArray_AddNull(JsonArray *array);
+TINYCORE_API TinyRet JsonArray_AddNumber(JsonArray *array, JsonNumber *value);
+TINYCORE_API TinyRet JsonArray_AddObject(JsonArray *array, JsonObject *value);
+TINYCORE_API TinyRet JsonArray_AddArray(JsonArray *array, JsonArray *value);
 
 TINYCORE_API uint32_t JsonArray_GetSize(const JsonArray *array);
 TINYCORE_API bool JsonArray_IsEmpty(const JsonArray *array);

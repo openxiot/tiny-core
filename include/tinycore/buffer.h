@@ -26,7 +26,7 @@ typedef struct Buffer
 
 /* Construct an empty buffer with room for capacity bytes.  A zero capacity
  * is allowed; the buffer grows on demand. */
-TINYCORE_API TINYCORE_RET Buffer_Construct(Buffer *buffer, size_t capacity);
+TINYCORE_API TinyRet Buffer_Construct(Buffer *buffer, size_t capacity);
 TINYCORE_API void Buffer_Dispose(Buffer *buffer);
 TINYCORE_API Buffer *Buffer_New(size_t capacity);
 TINYCORE_API void Buffer_Delete(Buffer *buffer);
@@ -38,18 +38,18 @@ TINYCORE_API size_t Buffer_GetCapacity(const Buffer *buffer);
 TINYCORE_API bool Buffer_IsEmpty(const Buffer *buffer);
 
 /* Ensure room for at least capacity bytes. */
-TINYCORE_API TINYCORE_RET Buffer_Reserve(Buffer *buffer, size_t capacity);
+TINYCORE_API TinyRet Buffer_Reserve(Buffer *buffer, size_t capacity);
 
 /* Set the number of valid bytes, growing the storage when needed.  Bytes
  * between the old and new length are zero filled. */
-TINYCORE_API TINYCORE_RET Buffer_SetLength(Buffer *buffer, size_t length);
+TINYCORE_API TinyRet Buffer_SetLength(Buffer *buffer, size_t length);
 
 /* Append bytes, growing the storage when needed. */
-TINYCORE_API TINYCORE_RET Buffer_Append(Buffer *buffer, const void *data, size_t length);
-TINYCORE_API TINYCORE_RET Buffer_AppendByte(Buffer *buffer, uint8_t value);
+TINYCORE_API TinyRet Buffer_Append(Buffer *buffer, const void *data, size_t length);
+TINYCORE_API TinyRet Buffer_AppendByte(Buffer *buffer, uint8_t value);
 
 /* Append a NUL terminated string (without its NUL). */
-TINYCORE_API TINYCORE_RET Buffer_AppendString(Buffer *buffer, const char *string);
+TINYCORE_API TinyRet Buffer_AppendString(Buffer *buffer, const char *string);
 
 /* Set the valid length to zero.  The storage is kept. */
 TINYCORE_API void Buffer_Clear(Buffer *buffer);

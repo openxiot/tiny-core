@@ -53,7 +53,7 @@ typedef struct TinyThread
 #endif
 } TinyThread;
 
-TINYCORE_API TINYCORE_RET TinyThread_Construct(TinyThread *thread,
+TINYCORE_API TinyRet TinyThread_Construct(TinyThread *thread,
                                                TinyThreadEntry entry,
                                                void *context,
                                                const char *name);
@@ -66,8 +66,8 @@ TINYCORE_API TinyThread *TinyThread_New(TinyThreadEntry entry,
 
 TINYCORE_API void TinyThread_Delete(TinyThread *thread);
 
-TINYCORE_API TINYCORE_RET TinyThread_Start(TinyThread *thread);
-TINYCORE_API TINYCORE_RET TinyThread_Join(TinyThread *thread);
+TINYCORE_API TinyRet TinyThread_Start(TinyThread *thread);
+TINYCORE_API TinyRet TinyThread_Join(TinyThread *thread);
 
 TINYCORE_API bool TinyThread_IsRunning(const TinyThread *thread);
 TINYCORE_API const char *TinyThread_GetName(const TinyThread *thread);
