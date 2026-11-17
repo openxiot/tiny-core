@@ -100,6 +100,40 @@ void JsonArray_Delete(JsonArray *array)
     tiny_free(array);
 }
 
+TINYCORE_RET JsonArray_CopyInto(JsonArray *dst, const JsonArray *src)
+{
+    const TinyNode *node = NULL;
+
+    if (dst == NULL || src == NULL)
+    {
+        return TINY_RET_E_NULL_PTR;
+    }
+    if (dst == src)
+    {
+        return TINY_RET_E_PARAM_INVALID;
+    }
+
+    /* Release any previous content of dst, keeping its delete listener. */
+    JsonArray_Clean(dst);
+
+    for (node = src->values.first; node != NULL; node = node->next)
+    {
+        JsonValue *copy = JsonValue_NewFrom((const JsonValue *)node->data);
+
+        if (copy == NULL)
+        {
+            return TINY_RET_E_NO_MEMORY;
+        }
+        if (TinyList_AddTail(&dst->values, copy) == NULL)
+        {
+            JsonValue_Delete(copy);
+            return TINY_RET_E_NO_MEMORY;
+        }
+    }
+
+    return TINY_RET_OK;
+}
+
 TINYCORE_RET JsonArray_AddValue(JsonArray *array, JsonValue *value)
 {
     if (array == NULL || value == NULL)

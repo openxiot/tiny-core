@@ -18,6 +18,13 @@ TINYCORE_API JsonArray *JsonArray_New(void);
 TINYCORE_API JsonArray *JsonArray_NewFrom(const JsonArray *array);
 TINYCORE_API void JsonArray_Delete(JsonArray *array);
 
+/*
+ * Deep copy src into an already constructed dst.  Any previous content of
+ * dst is released.  JsonArray_NewFrom() returns a new array rather than
+ * an in-place copy, so this helper bridges the two styles.
+ */
+TINYCORE_API TINYCORE_RET JsonArray_CopyInto(JsonArray *dst, const JsonArray *src);
+
 TINYCORE_API TINYCORE_RET JsonArray_Construct(JsonArray *array);
 TINYCORE_API void JsonArray_Dispose(JsonArray *array);
 
