@@ -17,7 +17,7 @@ TINYCORE_BEGIN_DECLS
 
 /* Growable byte buffer.  The internal storage is always followed by a NUL
  * byte, so a buffer holding text can be passed to C string functions. */
-typedef struct Buffer
+typedef struct
 {
     uint8_t *bytes;
     size_t length;   /* valid bytes */

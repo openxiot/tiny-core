@@ -31,7 +31,7 @@
 #define TINYCORE_LOG_TAG_LEN   32
 #define TINYCORE_LOG_LINE_LEN  512
 
-typedef struct TinyLogState
+typedef struct
 {
     TinyLogLevel level;
     FILE *file;

@@ -23,7 +23,7 @@ TINYCORE_BEGIN_DECLS
 
 typedef void *(*TinyThreadEntry)(void *context);
 
-typedef enum TinyThreadStatus
+typedef enum
 {
     TINY_THREAD_STATUS_STOPPED = 0,
     TINY_THREAD_STATUS_RUNNING = 1
@@ -37,7 +37,7 @@ typedef enum TinyThreadStatus
  * until a running thread finishes, so they are safe defaults; call Join()
  * yourself when you want to observe the exit.
  */
-typedef struct TinyThread
+typedef struct
 {
     TinyThreadStatus status;
     TinyThreadEntry entry;

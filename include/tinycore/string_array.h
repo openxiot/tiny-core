@@ -16,7 +16,7 @@ TINYCORE_BEGIN_DECLS
 
 /* Owned array of C strings backed by TinyList.  The array owns its strings;
  * they are released when the array is disposed. */
-typedef struct StringArray
+typedef struct
 {
     TinyList values; /* char* */
 } StringArray;

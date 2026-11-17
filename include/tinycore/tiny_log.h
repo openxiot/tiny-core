@@ -17,7 +17,7 @@
 
 TINYCORE_BEGIN_DECLS
 
-typedef enum TinyLogLevel
+typedef enum
 {
     TINY_LOG_LEVEL_UNKNOWN = 0,
     TINY_LOG_LEVEL_VERBOSE = 1,

@@ -19,7 +19,7 @@
 
 #include <float.h>
 
-typedef struct JsonEncoderState
+typedef struct
 {
     JsonOutput output;
     void *context;

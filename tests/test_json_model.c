@@ -498,7 +498,7 @@ static void test_json_object(void)
     JsonObject_Delete(object);
 }
 
-typedef struct OutputCollector
+typedef struct
 {
     Buffer buffer;
     int calls;

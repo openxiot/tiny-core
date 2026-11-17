@@ -22,7 +22,7 @@ TINYCORE_BEGIN_DECLS
  * bytes FF 00.  Values longer than 255 bytes are emitted as several fragments
  * (255 bytes each) with the same type, as RFC 8236 / HomeKit require.
  */
-typedef struct Tlv8List
+typedef struct
 {
     TinyList items;  /* Tlv8Item* */
     uint8_t *bytes;  /* cached serialization */

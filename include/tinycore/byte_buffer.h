@@ -22,7 +22,7 @@ TINYCORE_BEGIN_DECLS
  *
  * Bytes are appended at length and consumed at offset.  Compact() moves the
  * unread region back to the start so the free region becomes contiguous. */
-typedef struct ByteBuffer
+typedef struct
 {
     uint8_t *bytes;
     size_t size;   /* capacity */

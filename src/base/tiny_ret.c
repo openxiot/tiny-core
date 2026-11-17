@@ -9,7 +9,7 @@
 
 #include <tinycore/tiny_ret.h>
 
-typedef struct TinyRetDescription
+typedef struct
 {
     TinyRet ret;
     const char *description;

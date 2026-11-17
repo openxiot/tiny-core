@@ -19,7 +19,7 @@ TINYCORE_BEGIN_DECLS
  * One key/value pair.  The key is copied and owned by the item.  The value
  * is owned by the caller (or by the map's delete listener).
  */
-typedef struct TinyMapItem
+typedef struct
 {
     char *key;
     void *value;

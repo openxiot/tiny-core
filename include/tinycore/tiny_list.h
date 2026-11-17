@@ -29,7 +29,7 @@ typedef void (*TinyListDeleteListener)(void *data, void *context);
 /* Return false to stop the traversal. */
 typedef bool (*TinyListVisitor)(void *data, void *context);
 
-typedef struct TinyList
+typedef struct
 {
     uint32_t size;
     TinyNode *first;

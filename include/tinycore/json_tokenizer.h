@@ -15,7 +15,7 @@
 
 TINYCORE_BEGIN_DECLS
 
-typedef struct JsonTokenizer
+typedef struct
 {
     TinyQueue queue; /* JsonToken* */
     const char *string;

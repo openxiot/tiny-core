@@ -19,7 +19,7 @@ TINYCORE_BEGIN_DECLS
  * read_index; length counts the unread bytes.  Writes never overwrite unread
  * data: when the buffer is full the extra bytes are dropped and the caller
  * is told how many were accepted. */
-typedef struct CycleBuffer
+typedef struct
 {
     uint8_t *bytes;
     size_t size;

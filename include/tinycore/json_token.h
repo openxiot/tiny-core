@@ -14,7 +14,7 @@
 
 TINYCORE_BEGIN_DECLS
 
-typedef enum JsonTokenType
+typedef enum
 {
     JSON_TOKEN_INVALID       = 0,
     JSON_TOKEN_OBJECT_START  = 1,
@@ -32,7 +32,7 @@ typedef enum JsonTokenType
 
 /* offset/length address the raw token inside the source string.  For
  * strings the quotes are included. */
-typedef struct JsonToken
+typedef struct
 {
     JsonTokenType type;
     size_t offset;

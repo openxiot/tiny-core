@@ -16,7 +16,7 @@
 
 TINYCORE_BEGIN_DECLS
 
-typedef enum JsonDecoderStatus
+typedef enum
 {
     JSON_DECODER_STATUS_OK         = 0,
     JSON_DECODER_STATUS_INCOMPLETE = 1,
@@ -30,7 +30,7 @@ typedef enum JsonDecoderStatus
  * object is available; the object is then decoded and its bytes are
  * consumed, leaving any following document in the buffer.
  */
-typedef struct JsonDecoder
+typedef struct
 {
     Buffer input;
     bool constructed;

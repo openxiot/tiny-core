@@ -27,7 +27,7 @@ typedef bool (*TinyMapVisitor)(const char *key, void *value, void *context);
  * scan, which is the right trade-off for the small collections the embedded
  * target deals with.
  */
-typedef struct TinyMap
+typedef struct
 {
     TinyList items; /* TinyMapItem* */
     TinyMapValueDeleteListener delete_listener;

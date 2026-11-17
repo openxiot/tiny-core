@@ -15,7 +15,7 @@
 TINYCORE_BEGIN_DECLS
 
 /* FIFO queue built on TinyList.  Head is the oldest element. */
-typedef struct TinyQueue
+typedef struct
 {
     TinyList list;
 } TinyQueue;

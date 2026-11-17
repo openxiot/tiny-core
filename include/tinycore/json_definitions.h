@@ -16,48 +16,48 @@
 
 TINYCORE_BEGIN_DECLS
 
-typedef struct JsonBoolean
+typedef struct
 {
     bool value;
 } JsonBoolean;
 
 /* value is NUL terminated; length excludes the terminator and may differ
  * from strlen(value) when the string contains an embedded NUL. */
-typedef struct JsonString
+typedef struct
 {
     char *value;
     size_t length;
 } JsonString;
 
-typedef enum JsonNumberType
+typedef enum
 {
     JSON_NUMBER_INTEGER = 0,
     JSON_NUMBER_FLOAT   = 1
 } JsonNumberType;
 
-typedef union JsonNumberValue
+typedef union
 {
     int32_t intValue;
     double floatValue;
 } JsonNumberValue;
 
-typedef struct JsonNumber
+typedef struct
 {
     JsonNumberType type;
     JsonNumberValue value;
 } JsonNumber;
 
-typedef struct JsonArray
+typedef struct
 {
     TinyList values; /* JsonValue* */
 } JsonArray;
 
-typedef struct JsonObject
+typedef struct
 {
     TinyMap data; /* key -> JsonValue* */
 } JsonObject;
 
-typedef enum JsonValueType
+typedef enum
 {
     JSON_UNDEFINED = 0,
     JSON_STRING    = 1,
@@ -68,7 +68,7 @@ typedef enum JsonValueType
     JSON_NULL      = 6
 } JsonValueType;
 
-typedef union JsonValueData
+typedef union
 {
     JsonString *string;
     JsonNumber *number;
@@ -77,7 +77,7 @@ typedef union JsonValueData
     JsonBoolean *boolean;
 } JsonValueData;
 
-typedef struct JsonValue
+typedef struct
 {
     JsonValueType type;
     JsonValueData data;

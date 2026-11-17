@@ -17,7 +17,7 @@ TINYCORE_BEGIN_DECLS
 
 /* TLV8 wire types used when converting JSON values.  The numeric values are
  * part of the on-the-wire format and must not change. */
-typedef enum Tlv8ValueType
+typedef enum
 {
     TLV8_VALUE_UNDEFINED = 0,
     TLV8_VALUE_BOOLEAN   = 1,

@@ -17,7 +17,7 @@ TINYCORE_BEGIN_DECLS
 
 /* One logical TLV8 entry.  An entry longer than 255 bytes is split into
  * several fragments when a Tlv8List is serialized. */
-typedef struct Tlv8Item
+typedef struct
 {
     uint8_t type;
     uint32_t length;
